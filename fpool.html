@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fpool Cafe - A splash of flavor with every sip.</title>
+    <link rel="stylesheet" href="fpool.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="scrollToSection('home')">
+                    <img src="logo.png" alt="Fpool Cafe logo" class="logo-mark">
+                </div>
+
+                <nav class="nav desktop-nav">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#menu" class="nav-link" data-section="menu">Menu</a>
+                </nav>
+
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="desktop-only">Cart</span>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+
+            <nav class="nav mobile-nav">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#menu" class="nav-link" data-section="menu">Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Your Perfect Coffee<br><span class="highlight">Experience</span></h1>
+                    <p>Handcrafted beverages made with passion. From premium coffee beans to artisanal drinks, we brew perfection in every cup.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('menu')">
+                            Order Now
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop" alt="Coffee cups">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>Discover our handcrafted selection</p>
+            </div>
+
+            <div class="category-filter" id="categoryFilter">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="coffee">Coffee</button>
+                <button class="filter-btn" data-category="drinks">Drinks</button>
+                <button class="filter-btn" data-category="food">Food</button>
+                <button class="filter-btn" data-category="beans">Beans</button>
+                <button class="filter-btn" data-category="add-ons">Add-ons</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid"></div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-btn" id="closeCart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="order-type-selector">
+                <label>Order Type</label>
+                <div class="order-types">
+                    <button class="order-type-btn active" data-type="To Go">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        </svg>
+                        <span>To Go</span>
+                    </button>
+                    <button class="order-type-btn" data-type="Dine In">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        </svg>
+                        <span>Dine In</span>
+                    </button>
+                    <button class="order-type-btn" data-type="Delivery">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                        <span>Delivery</span>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₱0.00</span>
+                </div>
+                <div class="summary-row" id="deliveryFeeRow" style="display: none;">
+                    <span>Delivery Fee</span>
+                    <span id="deliveryFee">₱0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>VAT (12%)</span>
+                    <span id="vat">₱0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">₱0.00</span>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Receipt Modal -->
+    <div class="receipt-overlay" id="receiptOverlay"></div>
+    <div class="receipt-modal" id="receiptModal">
+        <div class="receipt-content">
+            <button class="receipt-close" id="closeReceipt">×</button>
+            <div class="receipt-header">
+                <h2>Order Receipt</h2>
+            </div>
+            <div class="receipt-body" id="receiptBody">
+                <!-- Receipt content will be generated here -->
+            </div>
+            <div class="receipt-actions">
+                <button class="btn btn-primary" id="printReceiptBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    Print / Save as PDF
+                </button>
+                <button class="btn btn-secondary" id="closeReceiptBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                 <div class="footer-section">
+                    <img src="logo.png" alt="Fpool Cafe logo" class="footer-logo">
+                    <p>Your perfect coffee experience, crafted with passion.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home" onclick="scrollToSection('home')">Home</a>
+                    <a href="#menu" onclick="scrollToSection('menu')">Menu</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: FpoolCafe@gmail.com</p>
+                    <p>Phone: (09)61 607 3063</p>
+                    <a href></a>
+                    <a href="https://www.facebook.com/profile.php?id=61554482671726" target="_blank">Follow us on Facebook</a>
+                    <a href="https://www.tiktok.com/@fpool.cafe">Tiktok</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FpoolCafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="fpool.js"></script>
+</body>
+</html>
